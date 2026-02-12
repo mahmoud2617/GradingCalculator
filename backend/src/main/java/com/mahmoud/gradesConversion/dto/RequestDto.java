@@ -12,4 +12,5 @@ public class RequestDto {
 
     private String from;
     private String to;
+    private String fromTextContent;
 }

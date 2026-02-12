@@ -1,9 +1,13 @@
-const API_URL = "http://localhost:8080/api/convert";
+const API_URL = "/api/convert";
 
 async function convert() {
     const value = document.getElementById("value").value.trim();
     const from = document.getElementById("from").value;
     const to = document.getElementById("to").value;
+
+    const fromTextContent =
+        document.getElementById("from").options[document.getElementById("from").selectedIndex].text;
+
     const resultBox = document.getElementById("result");
     const button = document.querySelector("button");
 
@@ -19,8 +23,17 @@ async function convert() {
     try {
         const response = await fetch(API_URL, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ value, from, to })
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(
+                {
+                  value,
+                  from,
+                  to,
+                  fromTextContent
+                }
+            )
         });
 
         const data = await response.json();

@@ -35,6 +35,7 @@ public class GradesConversionService {
         String value = request.getValue();
         String from = request.getFrom();
         String to = request.getTo();
+        String fromTextContent = (request.getFromTextContent() != null)? request.getFromTextContent() : from;
         String grade;
 
         try {
@@ -44,7 +45,7 @@ public class GradesConversionService {
              grade = getGrade(gradeTypeFrom, gradeTypeTo, value);
 
             if (grade == null) {
-                throw new InvalidRequestException("Invalid " + from + " value.");
+                throw new InvalidRequestException("Invalid " + fromTextContent + " value.");
             }
 
             return new ResponseDto(grade);
@@ -78,14 +79,15 @@ public class GradesConversionService {
 
                 gradingScale = GRADES.stream()
                         .filter(g ->
-                                Math.abs(g.getGpa() - gpaValue) < 0.001
+                            gpaValue >= g.getGpa()
+                            && gpaValue <= GRADES.getFirst().getGpa()
                         )
                         .findFirst()
                         .orElse(null);
             }
 
             case PERCENTAGE -> {
-                int percentageValue = Integer.parseInt(value);
+                double percentageValue = Double.parseDouble(value);
 
                 gradingScale = GRADES.stream()
                         .filter(g ->

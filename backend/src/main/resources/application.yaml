@@ -1,3 +1,6 @@
 spring:
   application:
     name: gradesConversion
+
+server:
+  port: ${PORT:8080}

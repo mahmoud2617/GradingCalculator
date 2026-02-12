@@ -1,0 +1,16 @@
+services:
+  backend:
+    build: ./backend
+    container_name: grade_conversion-backend
+    environment:
+      - PORT=8080
+    expose:
+      - "8080"
+
+  frontend:
+    build: ./frontend
+    container_name: grade_conversion-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
