@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Converter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+
+<div class="card">
+    <h1>Grade Converter</h1>
+
+    <div class="input-group">
+        <input type="text" id="value" placeholder="Enter value (e.g. 85)">
+    </div>
+
+    <div class="input-group">
+        <select id="from">
+            <option value="PERCENTAGE">Percentage</option>
+            <option value="GPA">GPA</option>
+            <option value="LETTER">Letter</option>
+        </select>
+    </div>
+
+    <div class="input-group">
+        <select id="to">
+            <option value="GPA">GPA</option>
+            <option value="PERCENTAGE">Percentage</option>
+            <option value="LETTER">Letter</option>
+        </select>
+    </div>
+
+    <button onclick="convert()">Convert</button>
+
+    <div class="result" id="result">Result will appear here</div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <h3>Contact Me</h3>
+        <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/mahmoud2617" target="_blank">LinkedIn</a></p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:mm2617d@gmail.com">mm2617d@gmail.com</a></p>
+        <p><i class="fas fa-phone"></i> <a href="tel:+201010962096">+201010962096</a></p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
+
