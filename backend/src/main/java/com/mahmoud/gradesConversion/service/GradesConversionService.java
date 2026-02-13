@@ -75,6 +75,9 @@ public class GradesConversionService {
             }
 
             case GPA -> {
+                if (!isParsableToDouble(value))
+                    return null;
+
                 double gpaValue = Double.parseDouble(value);
 
                 gradingScale = GRADES.stream()
@@ -87,6 +90,9 @@ public class GradesConversionService {
             }
 
             case PERCENTAGE -> {
+                if (!isParsableToDouble(value))
+                    return null;
+
                 double percentageValue = Double.parseDouble(value);
 
                 gradingScale = GRADES.stream()
@@ -114,5 +120,14 @@ public class GradesConversionService {
                     + gradingScale.getPercentageMaxValue()
                     + "%";
         };
+    }
+
+    private boolean isParsableToDouble(String value) {
+        try {
+            Double.parseDouble(value);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
